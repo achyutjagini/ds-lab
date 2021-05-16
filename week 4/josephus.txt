@@ -1,0 +1,24 @@
+ 
+int josephus(List* cll, int k)
+{
+
+Node *win = cll->head;
+Node *del = NULL;
+for (int i=0;i<k;i++)
+  win = win->next;
+if (k==-1)
+  win=cll->tail;
+while (cll->length>1)
+{
+  del=win->next;
+  win->next= del->next;
+  free(del);
+  cll->length--;
+  win = win->next;
+}
+cll->head = win;
+cll->tail = win;
+return win->data;
+
+//TODO
+}
